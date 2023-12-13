@@ -5,8 +5,7 @@
 #include <netdb.h>
 
 
-int getaddrinfo(const char *node, const char *service,
-const struct addrinfo *hints, struct addrinfo **res);
+int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res);
 struct addrinfo {
 int ai_flags;
 int ai_family;
@@ -44,3 +43,5 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
+

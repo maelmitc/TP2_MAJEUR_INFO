@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
     hints.ai_family = AF_UNSPEC; // AF_UNSPEC allows both IPv4 and IPv6
     hints.ai_socktype = SOCK_DGRAM; // Use SOCK_DGRAM for UDP
 
-    int status = getaddrinfo(host, "69", &hints, &result);
+    int status = getaddrinfo(host, "1069", &hints, &result);
     if (status != 0) {
         fprintf(stderr, "Error resolving host: %s\n", gai_strerror(status));
         exit(EXIT_FAILURE);
@@ -69,8 +69,8 @@ int main(int argc, char *argv[]) {
     rrqPacket[2 + strlen(file) + 1 + strlen("octet")] = '\0';
 
     // Send RRQ packet to the server
-    sdt=sendto(sockfd, rrqPacket, 2 + strlen(file) + 1 + strlen("octet") + 1, 0,
-               result->ai_addr, result->ai_addrlen) 
+    int sdt=sendto(sockfd, rrqPacket, 2 + strlen(file) + 1 + strlen("octet") + 1, 0,
+               result->ai_addr, result->ai_addrlen);
         if (sdt == -1){     
         perror("Error sending RRQ packet");
         close(sockfd);
